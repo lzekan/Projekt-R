@@ -125,6 +125,17 @@
                 android:text="Prijava"
                 android:textColor="@color/design_default_color_error" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textZaGreske"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tekst za greške"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

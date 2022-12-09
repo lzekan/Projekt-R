@@ -31,14 +31,15 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
-        TextView textViewUsernameError = new TextView(RegisterActivity.this);
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LinearLayout linearLayout = findViewById(R.id.linearLayout);
                 boolean credentialsError = false;
                 Connection connect;
                 String ConnectionResult = "";
+
+                TextView textViewUsernameError = findViewById(R.id.loginErrorText);
                 EditText inputUsername = (EditText) findViewById(R.id.inputUsername);
                 EditText inputEmail = (EditText) findViewById(R.id.inputEmail);
                 EditText inputPassword = (EditText) findViewById(R.id.inputPassword);
@@ -60,18 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!textViewUsernameError.getText().toString().equals("")) {
                                 textViewUsernameError.setText("Molimo unesite sve podatke!");
                                 textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
-                            } else {
-                                textViewUsernameError.setText("Molimo unesite sve podatke!");
-                                textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
-                                textViewUsernameError.setTextSize(15);
-                                textViewUsernameError.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                                textViewUsernameError.setLayoutParams(new ViewGroup.LayoutParams(250 * getResources().getDisplayMetrics().densityDpi / 160,
-                                        120 * getResources().getDisplayMetrics().densityDpi / 160));
-
-                                linearLayout.addView(textViewUsernameError);
+                                credentialsError = true;
                             }
-                            credentialsError = true;
+
                         } else {
                             while (rs.next()) {
                                 if (rs.getString(2).equals(inputUsername.getText().toString()) &&
@@ -79,57 +71,26 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (!textViewUsernameError.getText().toString().equals("")) {
                                         textViewUsernameError.setText("Korisničko ime i email se već koriste!");
                                         textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
+                                        credentialsError = true;
                                     }
-                                    else {
-                                        textViewUsernameError.setText("Korisničko ime i email se već koriste!");
-                                        textViewUsernameError.setTextSize(15);
-                                        textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
-                                        textViewUsernameError.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                                        textViewUsernameError.setLayoutParams(new ViewGroup.LayoutParams(250 * getResources().getDisplayMetrics().densityDpi / 160,
-                                                120 * getResources().getDisplayMetrics().densityDpi / 160));
-
-                                        linearLayout.addView(textViewUsernameError);
-                                    }
-                                    credentialsError = true;
                                 }
+
                                 else if (rs.getString(2).equals(inputUsername.getText().toString())) {
                                     //korisnicko ime u uporabi
                                     if (!textViewUsernameError.getText().toString().equals("")) {
                                         textViewUsernameError.setText("Korisničko ime se već koristi!");
                                         textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
+                                        credentialsError = true;
                                     }
-                                    else {
-                                        textViewUsernameError.setText("Korisničko ime se već koristi!");
-                                        textViewUsernameError.setTextSize(15);
-                                        textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
-                                        textViewUsernameError.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                                        textViewUsernameError.setLayoutParams(new ViewGroup.LayoutParams(200*getResources().getDisplayMetrics().densityDpi/160,
-                                                120*getResources().getDisplayMetrics().densityDpi/160));
-
-                                        linearLayout.addView(textViewUsernameError);
-                                    }
-                                    credentialsError = true;
                                 }
+
                                 else if (rs.getString(4).equals(inputEmail.getText().toString())) {
                                     //email u uporabi
                                     if (!textViewUsernameError.getText().toString().equals("")) {
                                         textViewUsernameError.setText("Email se već koristi!");
                                         textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
+                                        credentialsError = true;
                                     }
-                                    else {
-                                        textViewUsernameError.setText("Email se već koristi!");
-                                        textViewUsernameError.setTextSize(15);
-                                        textViewUsernameError.setTextColor(getResources().getColor(R.color.red));
-                                        textViewUsernameError.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                                        textViewUsernameError.setLayoutParams(new ViewGroup.LayoutParams(200*getResources().getDisplayMetrics().densityDpi/160,
-                                                120*getResources().getDisplayMetrics().densityDpi/160));
-
-                                        linearLayout.addView(textViewUsernameError);
-                                    }
-                                    credentialsError = true;
                                 }
                             }
                         }
@@ -145,19 +106,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 textViewUsernameError.setText("Uspješna registracija!");
                                 textViewUsernameError.setTextColor(getResources().getColor(R.color.green));
                             }
-                            else {
-                                textViewUsernameError.setText("Uspješna registracija!");
-                                textViewUsernameError.setTextSize(15);
-                                textViewUsernameError.setTextColor(getResources().getColor(R.color.green));
-                                textViewUsernameError.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                                textViewUsernameError.setLayoutParams(new ViewGroup.LayoutParams(250 * getResources().getDisplayMetrics().densityDpi / 160,
-                                        120 * getResources().getDisplayMetrics().densityDpi / 160));
-
-                                linearLayout.addView(textViewUsernameError);
-                            }
                         }
-//INSERT INTO userdb (iduser,username,password,email) values (nextval('seq_iduser'),'peroperic','KluaSd2', 'peroperic@gmail.com');
+
                     } else {
                         ConnectionResult = "Check connection";
                     }
