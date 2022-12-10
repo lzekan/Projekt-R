@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                         ConnectionResult = "Check connection";
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    createMessage("Molimo provjerite internetsku vezu i pokušajte ponovno.");
                 }
 
             }

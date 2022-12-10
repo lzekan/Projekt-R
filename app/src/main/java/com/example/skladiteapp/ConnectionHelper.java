@@ -1,12 +1,16 @@
 package com.example.skladiteapp;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.StrictMode;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectionHelper {
+public class ConnectionHelper extends AppCompatActivity {
     Connection connection;
     String username, password, ip, port, database;
 
@@ -31,10 +35,23 @@ public class ConnectionHelper {
 
 
         } catch (Exception e) {
-            System.out.println(e);
+            createMessage("Molimo provjerite internetsku vezu i pokušajte ponovno.");
         }
 
         return connection;
+    }
+    private void createMessage(String text) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ConnectionHelper.this);
+        builder.setCancelable(true);
+        builder.setMessage(text);
+        builder.setTitle("Dogodila se greška!");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
     }
 
 }

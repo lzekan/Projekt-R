@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    createMessage("Molimo provjerite internetsku vezu i pokušajte ponovno.", true);
                 }
             }
 
