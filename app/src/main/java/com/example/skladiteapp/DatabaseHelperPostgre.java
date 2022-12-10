@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectionHelper extends AppCompatActivity {
+public class DatabaseHelperPostgre extends AppCompatActivity {
     Connection connection;
     String username, password, ip, port, database;
 
@@ -41,7 +41,7 @@ public class ConnectionHelper extends AppCompatActivity {
         return connection;
     }
     private void createMessage(String text) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(ConnectionHelper.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DatabaseHelperPostgre.this);
         builder.setCancelable(true);
         builder.setMessage(text);
         builder.setTitle("Dogodila se greška!");

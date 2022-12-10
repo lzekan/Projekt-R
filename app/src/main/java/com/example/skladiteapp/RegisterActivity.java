@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        TextView btnRegister = findViewById(R.id.btnRegister);
+
         TextView btnLogin = findViewById(R.id.jumpToLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,22 +30,23 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
+        TextView btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean credentialsError = false;
                 Connection connect;
-                String ConnectionResult = "";
-
 
                 EditText inputUsername = (EditText) findViewById(R.id.inputUsername);
                 EditText inputEmail = (EditText) findViewById(R.id.inputEmail);
                 EditText inputPassword = (EditText) findViewById(R.id.inputPassword);
 
                 try {
-                    ConnectionHelper connectionHelper = new ConnectionHelper();
-                    connect = connectionHelper.connect();
+                    DatabaseHelperPostgre databaseHelperPostgre = new DatabaseHelperPostgre();
+                    connect = databaseHelperPostgre.connect();
+
+                    DatabaseHelperSQLite databaseHelperSQLite = new DatabaseHelperSQLite(RegisterActivity.this);
+
                     if(connect!=null) {
                         String querySelect = "SELECT * FROM userdb;";
                         Statement statement = connect.createStatement();
@@ -84,10 +85,12 @@ public class RegisterActivity extends AppCompatActivity {
                                     + inputEmail.getText().toString() + "');";
                             statement.executeUpdate(queryInsert);
                             createMessage("Možete se prijaviti sa svojim novim računom.", false);
+
+                            databaseHelperSQLite.addData(inputUsername.getText().toString(),
+                                    inputPassword.getText().toString(),
+                                    inputEmail.getText().toString());
                         }
 
-                    } else {
-                        ConnectionResult = "Check connection";
                     }
 
                 } catch (Exception e) {

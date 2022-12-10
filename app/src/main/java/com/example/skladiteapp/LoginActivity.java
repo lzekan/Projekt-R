@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -38,37 +39,24 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 boolean wasFound = false;
                 Connection connect;
-                String ConnectionResult = "";
                 EditText editTextUsername = (EditText) findViewById(R.id.inputUsername);
                 EditText editTextPassword = (EditText) findViewById(R.id.inputPassword);
-                try {
-                    ConnectionHelper connectionHelper = new ConnectionHelper();
-                    connect = connectionHelper.connect();
-                    if(connect!=null) {
-                        String query = "SELECT * FROM userdb;";
-                        Statement statement = connect.createStatement();
-                        ResultSet rs = statement.executeQuery(query);
 
-                        while (rs.next()) {
-                            if (editTextUsername.getText().toString().equals(rs.getString(2))
-                                    && editTextPassword.getText().toString().equals(rs.getString(3))) {
+                DatabaseHelperSQLite databaseHelperSQLite = new DatabaseHelperSQLite(LoginActivity.this);
+                Cursor data = databaseHelperSQLite.getData();
+                while(data.moveToNext()) {
+                    if (editTextUsername.getText().toString().equals(data.getString(1))
+                            && editTextPassword.getText().toString().equals(data.getString(2))) {
 
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                wasFound = true;
-                                break;
-                            }
-                        }
-
-                        //error message
-                        if(!wasFound) {
-                            createMessage("Neispravno korisničko ime ili lozinka.");
-                        }
-
-                    } else {
-                        ConnectionResult = "Check connection";
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        wasFound = true;
+                        break;
                     }
-                } catch (Exception e) {
-                    createMessage("Molimo provjerite internetsku vezu i pokušajte ponovno.");
+                }
+
+                //error message
+                if(!wasFound) {
+                    createMessage("Neispravno korisničko ime ili lozinka.");
                 }
 
             }
