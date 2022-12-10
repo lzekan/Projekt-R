@@ -18,8 +18,6 @@ public class ConnectionHelper {
         port = "5432";
         username = "hrvoje";
         password = "kQq8UdiQANJE7ELlIxdftlXx6T7ip9dc";
-        //private String url = "jdbc:postgresql://%s:%d/%s";
-        //private boolean status;
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);

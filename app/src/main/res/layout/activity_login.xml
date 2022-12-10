@@ -86,7 +86,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Niste prijavljeni?  " />
+            android:text="Niste prijavljeni?"
+            android:layout_marginRight="7dp"/>
 
         <TextView
             android:id="@+id/jumpToRegister"
@@ -95,16 +96,5 @@
             android:text="Registracija"
             android:textColor="@color/design_default_color_error" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/loginErrorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Neispravno korisničko ime ili kozinka!"
-        android:textColor="@color/white"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,20 +88,6 @@
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="375dp"
-        android:layout_height="120dp"
-        android:orientation="vertical"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
-        app:layout_constraintStart_toStartOf="@+id/btnRegister"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister">
-
-
-
-
     <LinearLayout
             android:layout_width="375dp"
             android:layout_height="20dp"
@@ -116,7 +102,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registrirani ste?  "/>
+                android:text="Registrirani ste?"
+                android:layout_marginRight="7dp"/>
 
             <TextView
                 android:id="@+id/jumpToLogin"
@@ -125,17 +112,5 @@
                 android:text="Prijava"
                 android:textColor="@color/design_default_color_error" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/loginErrorText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tekst za greške"
-            android:layout_marginTop="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

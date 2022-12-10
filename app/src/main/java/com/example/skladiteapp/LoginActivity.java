@@ -1,12 +1,12 @@
 package com.example.skladiteapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -52,15 +52,16 @@ public class LoginActivity extends AppCompatActivity {
                         while (rs.next()) {
                             if (editTextUsername.getText().toString().equals(rs.getString(2))
                                     && editTextPassword.getText().toString().equals(rs.getString(3))) {
+
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 wasFound = true;
+                                break;
                             }
                         }
 
-                        //ERROR MESSAGE
+                        //error message
                         if(!wasFound) {
-                            TextView textViewError = (TextView) findViewById(R.id.loginErrorText);
-                            textViewError.setTextColor(getResources().getColor(R.color.red));
+                            createMessage("Neispravno korisničko ime ili lozinka.");
                         }
 
                     } else {
@@ -72,5 +73,19 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void createMessage(String text) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setCancelable(true);
+        builder.setMessage(text);
+        builder.setTitle("Dogodila se greška!");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
     }
 }
