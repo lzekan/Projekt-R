@@ -4,13 +4,84 @@
     android:layout_height="match_parent"
     android:id="@+id/relativeLayoutGet">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Primanje"
-        android:textSize="30sp"
-        android:layout_centerInParent="true">
-    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="130dp"
+            android:text="Primanje"
+            android:textSize="30sp"></TextView>
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewTypeGet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="100dp"
+            android:width="250dp"
+            android:completionThreshold="0"
+            android:hint="Odaberi tip artikla: " />
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewModelGet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:width="250dp"
+            android:completionThreshold="0"
+            android:hint="Odaberi model artikla: " />
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewLocationGet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:width="250dp"
+            android:completionThreshold="0"
+            android:hint="Odaberi lokaciju skladištenja: " />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addAmount"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:inputType="number"
+            android:hint="Unesite količinu:" />
+
+        <Button
+            android:id="@+id/buttonAddToBase"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="40dp"
+            android:text="Dodaj" />
+
+
+    </LinearLayout>
+
 
 
     <LinearLayout
@@ -21,9 +92,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginBottom="0dp"
-        android:textAlignment="center"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:textAlignment="center">
 
         <Button
             android:id="@+id/buttonGet"
@@ -39,8 +110,8 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/buttonGet"
             android:layout_marginRight="50dp"
+            android:layout_toEndOf="@+id/buttonGet"
             android:background="@drawable/ic_izdaj" />
 
         <Button
@@ -49,8 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/buttonTake"
             android:layout_marginRight="50dp"
+            android:layout_toEndOf="@+id/buttonTake"
             android:background="@drawable/ic_premjesti" />
 
         <Button
@@ -62,8 +133,8 @@
             android:layout_toEndOf="@+id/buttonTake"
             android:background="@drawable/ic_logout" />
 
-
     </LinearLayout>
+
 
 
 
