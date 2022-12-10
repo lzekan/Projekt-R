@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
         TextView main = findViewById(R.id.btnLogin);
 
         //Register
-
         btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -35,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Login
         main.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 boolean wasFound = false;
@@ -71,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
         });
     }

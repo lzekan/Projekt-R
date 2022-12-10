@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/fragmentTake">
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,4 +11,56 @@
         android:textSize="30sp"
         android:layout_centerInParent="true">
     </TextView>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutGet"
+        android:layout_width="412dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonGet"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/ic_zaprimi" />
+
+        <Button
+            android:id="@+id/buttonTake"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/buttonGet"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/ic_izdaj" />
+
+        <Button
+            android:id="@+id/buttonRelocate"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/buttonTake"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/ic_premjesti" />
+
+        <Button
+            android:id="@+id/buttonLogout"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/buttonTake"
+            android:background="@drawable/ic_logout" />
+
+
+    </LinearLayout>
 </RelativeLayout>

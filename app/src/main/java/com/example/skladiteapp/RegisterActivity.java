@@ -44,10 +44,6 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText inputEmail = (EditText) findViewById(R.id.inputEmail);
                 EditText inputPassword = (EditText) findViewById(R.id.inputPassword);
 
-                Log.i("Username = ", inputUsername.getText().toString());
-                Log.i("Password = ", inputPassword.getText().toString());
-                Log.i("Email = ", inputEmail.getText().toString());
-                Log.i("Set text = ", textViewUsernameError.getText().toString());
                 try {
                     ConnectionHelper connectionHelper = new ConnectionHelper();
                     connect = connectionHelper.connect();
