@@ -82,37 +82,6 @@ public class GetFragment extends Fragment{
         ArrayAdapter<String> adapterLocation = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, locations);
         actvLocation.setAdapter(adapterLocation);
 
-
-        Button buttonTake = (Button) view.findViewById(R.id.buttonTake);
-        buttonTake.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, new TakeFragment())
-                        .commit();
-            }
-        });
-
-        Button buttonRelocate = (Button) view.findViewById(R.id.buttonRelocate);
-        buttonRelocate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, new RelocateFragment())
-                        .commit();
-            }
-        });
-
-        Button buttonLogOut = (Button) view.findViewById(R.id.buttonLogout);
-        buttonLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }
-        });
-
         TextInputEditText ammountTextView = view.findViewById(R.id.addAmount);
         Button buttonSaveToBase = (Button) view.findViewById(R.id.buttonAddToBase);
         buttonSaveToBase.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +94,7 @@ public class GetFragment extends Fragment{
                 ArrayList<String> emptyArrey = new ArrayList<>();
 
                 if (itemType.equals("") || itemModel.equals("") || location.equals("")) {
-                    createMessage("Molimo unesite sve podatke.",true);
+                    createMessage("Molimo unesite sve podatke.","error");
                 }
                 else {
                     if (!itemTypes.contains(itemType)) {
@@ -170,8 +139,40 @@ public class GetFragment extends Fragment{
                                 " WHERE i1.iditem=(select iditem from item as i2 join model on i2.idmodel = model.idmodel where model.modelname='"+itemModel.trim()+"');",
                                 emptyArrey, -1);
                     }
-                    createMessage("Artikl uspješno dodan.",false);
+                    createMessage("Artikl uspješno dodan.","success");
                 }
+            }
+        });
+
+
+
+        Button buttonTake = (Button) view.findViewById(R.id.buttonTake);
+        buttonTake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, new TakeFragment())
+                        .commit();
+            }
+        });
+
+        Button buttonRelocate = (Button) view.findViewById(R.id.buttonRelocate);
+        buttonRelocate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, new RelocateFragment())
+                        .commit();
+            }
+        });
+
+        Button buttonLogOut = (Button) view.findViewById(R.id.buttonLogout);
+        buttonLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createMessage("Želite li se odjaviti?", "logout");
             }
         });
 
@@ -203,12 +204,12 @@ public class GetFragment extends Fragment{
         }
     }
 
-    private void createMessage(String text, boolean isError) {
+    private void createMessage(String text, String type) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(true);
         builder.setMessage(text);
 
-        if (isError) {
+        if (type.equals("error")) {
             builder.setTitle("Dogodila se greška!");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -216,9 +217,23 @@ public class GetFragment extends Fragment{
                     //nothing
                 }
             });
-        } else {
+        } else if (type.equals("success")) {
             builder.setTitle("Uspjeh!");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //nothing
+                }
+            });
+        } else if (type.equals("logout")) {
+            builder.setTitle("Odjava.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
+            });
+            builder.setNegativeButton("Odustani", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     //nothing
