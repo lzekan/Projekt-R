@@ -17,36 +17,6 @@ public class RelocateFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_relocate, container, false);
 
-        Button buttonGet = (Button) view.findViewById(R.id.buttonGet);
-        buttonGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, new GetFragment())
-                        .commit();
-            }
-        });
-
-        Button buttonTake = (Button) view.findViewById(R.id.buttonTake);
-        buttonTake.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, new TakeFragment())
-                        .commit();
-            }
-        });
-
-        Button buttonLogOut = (Button) view.findViewById(R.id.buttonLogout);
-        buttonLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }
-        });
-
         return view;
     }
 }

@@ -145,38 +145,6 @@ public class GetFragment extends Fragment{
         });
 
 
-
-        Button buttonTake = (Button) view.findViewById(R.id.buttonTake);
-        buttonTake.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, new TakeFragment())
-                        .commit();
-            }
-        });
-
-        Button buttonRelocate = (Button) view.findViewById(R.id.buttonRelocate);
-        buttonRelocate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, new RelocateFragment())
-                        .commit();
-            }
-        });
-
-        Button buttonLogOut = (Button) view.findViewById(R.id.buttonLogout);
-        buttonLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createMessage("Želite li se odjaviti?", "logout");
-            }
-        });
-
-
         return view;
     }
 
@@ -225,21 +193,8 @@ public class GetFragment extends Fragment{
                     //nothing
                 }
             });
-        } else if (type.equals("logout")) {
-            builder.setTitle("Odjava.");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
-                }
-            });
-            builder.setNegativeButton("Odustani", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    //nothing
-                }
-            });
         }
+
         builder.show();
     }
 
