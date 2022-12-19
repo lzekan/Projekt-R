@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/iconIzdajAlt"
+        android:title="IzdajAlt"
+        android:icon="@drawable/ic_izdaj_alt" />
+
+    <item
+        android:id="@+id/iconZaprimiAlt"
+        android:title="ZaprimiAlt"
+        android:icon="@drawable/ic_zaprimi_alt" />
+
+    <item
+        android:id="@+id/iconPremjestiAlt"
+        android:title="PremjestiAlt"
+        android:icon="@drawable/ic_premjesti_alt" />
+
+    <item
+        android:id="@+id/iconStanjeAlt"
+        android:title="StanjeAlt"
+        android:icon="@drawable/ic_stanje_alt" />
+
+    <item
+        android:id="@+id/iconLogoutAlt"
+        android:title="LogoutAlt"
+        android:icon="@drawable/ic_logout" />
+
+</menu>
