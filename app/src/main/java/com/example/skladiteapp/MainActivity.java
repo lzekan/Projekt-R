@@ -76,8 +76,9 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 return true;
 
             case R.id.iconStanjeAlt:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.container, thirdFragment).commit();
-                return false;
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new StateFragment()).commit();
+                return true;
 
             case R.id.iconLogoutAlt:
                 createMessage("Želite li se odjaviti?", "logout");
