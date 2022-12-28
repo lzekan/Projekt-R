@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     private DrawerLayout drawer;
     private NavigationBarView navigationBarView ;
+    private ImageView logoutImage ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,16 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
         navigationBarView.setOnItemSelectedListener(this::onNavigationItemSelected);
         navigationBarView.setSelectedItemId(R.id.iconIzdajAlt);
+
+        logoutImage = findViewById(R.id.toolbar_logout) ;
+        logoutImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createMessage("Želite li se odjaviti?", "logout");
+            }
+        });
+
+
 
     }
 
@@ -48,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             }
         });
         builder.setNegativeButton("Odustani", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                navigationBarView.setSelectedItemId(R.id.iconIzdajAlt);
-            }
+             @Override
+              public void onClick(DialogInterface dialogInterface, int i) {
+                //navigationBarView.setSelectedItemId(R.id.iconIzdajAlt);
+              }
         });
 
         builder.show();
@@ -79,10 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new StateFragment()).commit();
                 return true;
-
-            case R.id.iconLogoutAlt:
-                createMessage("Želite li se odjaviti?", "logout");
-                return true;
+                
         }
         return false;
     }

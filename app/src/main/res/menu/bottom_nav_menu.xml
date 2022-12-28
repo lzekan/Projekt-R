@@ -21,9 +21,4 @@
         android:title="Stanje"
         android:icon="@drawable/ic_stanje_alt" />
 
-    <item
-        android:id="@+id/iconLogoutAlt"
-        android:title="Logout"
-        android:icon="@drawable/ic_logout" />
-
 </menu>
