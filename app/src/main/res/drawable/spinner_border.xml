@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Border layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp"/>
+            <stroke android:width="2dp"
+                android:color="#000000"/>
+        </shape>
+    </item>
+
+    <!-- Triangle arrow layer -->
+    <item android:left="16dp"
+        android:top="16dp"
+        android:bottom="16dp">
+        <rotate android:fromDegrees="45"
+            android:pivotX="50%"
+            android:pivotY="50%">
+            <shape android:shape="rectangle">
+                <size android:width="16dp"
+                    android:height="16dp"/>
+                <solid android:color="#000000"/>
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

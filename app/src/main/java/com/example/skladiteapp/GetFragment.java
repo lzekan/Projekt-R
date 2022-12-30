@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GetFragment extends Fragment{
 
@@ -35,13 +37,21 @@ public class GetFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_get, container, false);
 
         ArrayList<String> itemTypes = new ArrayList<>();
+        ArrayList<String> allItemModels = new ArrayList<>();
+        ArrayList<String> locations = new ArrayList<>();
+
+        Collections.sort(itemTypes);
+        Collections.sort(allItemModels);
+        Collections.sort(locations);
+
         executeQuery("SELECT * FROM itemtype", itemTypes, 2);
+        executeQuery("SELECT * FROM model", allItemModels, 3);
+        executeQuery("SELECT * FROM location", locations, 2);
+
         AutoCompleteTextView actvType = view.findViewById(R.id.autoCompleteTextViewTypeGet);
         ArrayAdapter<String> adapterType = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, itemTypes);
         actvType.setAdapter(adapterType);
 
-        ArrayList<String> allItemModels = new ArrayList<>();
-        executeQuery("SELECT * FROM model", allItemModels, 3);
         AutoCompleteTextView actvModel = view.findViewById(R.id.autoCompleteTextViewModelGet);
         ArrayAdapter<String> adapterModel = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, allItemModels);
         actvModel.setAdapter(adapterModel);
@@ -76,69 +86,80 @@ public class GetFragment extends Fragment{
             }
         });
 
-        ArrayList<String> locations = new ArrayList<>();
-        executeQuery("SELECT * FROM location", locations, 2);
         AutoCompleteTextView actvLocation = view.findViewById(R.id.autoCompleteTextViewLocationGet);
         ArrayAdapter<String> adapterLocation = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, locations);
         actvLocation.setAdapter(adapterLocation);
 
-        TextInputEditText ammountTextView = view.findViewById(R.id.addAmount);
+        TextInputEditText amountTextView = view.findViewById(R.id.addAmount);
         Button buttonSaveToBase = (Button) view.findViewById(R.id.buttonAddToBase);
         buttonSaveToBase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String itemType = actvType.getText().toString();
-                String itemModel = actvModel.getText().toString();
+                String model = actvModel.getText().toString();
                 String location = actvLocation.getText().toString();
-                String ammount = ammountTextView.getText().toString();
-                ArrayList<String> emptyArrey = new ArrayList<>();
+                String amount = amountTextView.getText().toString();
+                ArrayList<String> emptyArray = new ArrayList<>();
 
-                if (itemType.equals("") || itemModel.equals("") || location.equals("")) {
+                if (itemType.equals("") || model.equals("") || location.equals("")) {
                     createMessage("Molimo unesite sve podatke.","error");
-                }
-                else {
+                } else {
                     if (!itemTypes.contains(itemType)) {
                         executeQuery("INSERT INTO itemtype (idtype,typename) " +
                                 "VALUES (nextval('seq_idtype'),'"+itemType+"');",
-                                emptyArrey, -1);
+                                emptyArray, -1);
 
                         executeQuery("INSERT INTO item (iditem,barcode,ammount,idmodel,idlocation,idtype) " +
-                                        " VALUES (nextval('seq_iditem'),'barcode'," +ammount+
-                                        " ,(select idmodel from model where modelname='"+itemModel+"'"+
+                                        " VALUES (nextval('seq_iditem'),'barcode'," +amount+
+                                        " ,(select idmodel from model where modelname='"+model+"'"+
                                         " ),(select idlocation from location where sectorname='"+location+"'"+
                                         " ),(select idtype from itemtype where typename='"+itemType+"'));",
-                                emptyArrey, -1);
+                                emptyArray, -1);
                     }
-                    else if (!locations.contains(location)) {
+                    if (!locations.contains(location)) {
                         executeQuery("INSERT INTO location (idlocation,sectorname) " +
                                 "VALUES (nextval('seq_idlocation'),'"+location+"');",
-                                emptyArrey, -1);
+                                emptyArray, -1);
 
                         executeQuery("INSERT INTO item (iditem,barcode,ammount,idmodel,idlocation,idtype) " +
-                                        " VALUES (nextval('seq_iditem'),'barcode'," +ammount+
-                                        " ,(select idmodel from model where modelname='"+itemModel+"'"+
+                                        " VALUES (nextval('seq_iditem'),'barcode'," +amount+
+                                        " ,(select idmodel from model where modelname='"+model+"'"+
                                         " ),(select idlocation from location where sectorname='"+location+"'"+
                                         " ),(select idtype from itemtype where typename='"+itemType+"'));",
-                                emptyArrey, -1);
+                                emptyArray, -1);
                     }
-                    else if (!allItemModels.contains(itemModel)) {
+                    if (!allItemModels.contains(model)) {
                         executeQuery("INSERT INTO model (idmodel,manufacturername,modelname) " +
-                                "VALUES (nextval('seq_idmodel'),'SMISLITI MODEL','"+itemModel+"');",
-                                emptyArrey, -1);
+                                "VALUES (nextval('seq_idmodel'),'SMISLITI MODEL','"+model+"');",
+                                emptyArray, -1);
 
-                        executeQuery("INSERT INTO item (iditem,barcode,ammount,idmodel,idlocation,idtype) " +
-                                        " VALUES (nextval('seq_iditem'),'barcode'," +ammount+
-                                        " ,(select idmodel from model where modelname='"+itemModel+"'"+
-                                        " ),(select idlocation from location where sectorname='"+location+"'"+
-                                        " ),(select idtype from itemtype where typename='"+itemType+"'));",
-                                emptyArrey, -1);
+                    }
+                    ArrayList<String> amountInDb = new ArrayList<>();
+                    executeQuery(" select * from item join itemtype on item.idtype = itemtype.idtype " +
+                            "join model on item.idmodel = model.idmodel " +
+                            "join location on item.idlocation = location.idlocation " +
+                            "where modelname = '" + model + "' " +
+                            "and typename='" + itemType + "' " +
+                            "and sectorname = '" + location + "' ", amountInDb, 3);
+                    if (amountInDb.size() > 0) {
+                        int amountToSet = Integer.parseInt(amountInDb.get(0)) + Integer.parseInt(amount);
+                        executeQuery("update item " +
+                                "set ammount = " + amountToSet + " " +
+                                        "where idtype = (select idtype from itemtype where typename='" + itemType + "')" +
+                                        "and idmodel = (select idmodel from model where modelname='" + model + "')" +
+                                        "and idlocation = (select idlocation from location where sectorname='" + location + "')"
+                                , emptyArray, -1);
 
                     } else {
-                        executeQuery("UPDATE item i1 " +
-                                "SET ammount=(select ammount from item i2 join model on i2.idmodel=model.idmodel where model.modelname='"+itemModel.trim()+"') + "+ammount+
-                                " WHERE i1.iditem=(select iditem from item as i2 join model on i2.idmodel = model.idmodel where model.modelname='"+itemModel.trim()+"');",
-                                emptyArrey, -1);
+                        executeQuery("INSERT INTO item (iditem,barcode,ammount,idmodel,idlocation,idtype) " +
+                                        " VALUES (nextval('seq_iditem'),'barcode'," +amount+
+                                        " ,(select idmodel from model where modelname='"+model+"'"+
+                                        " ),(select idlocation from location where sectorname='"+location+"'"+
+                                        " ),(select idtype from itemtype where typename='"+itemType+"'));",
+                                emptyArray, -1);
                     }
+
+
                     createMessage("Artikl uspješno dodan.","success");
                 }
             }
@@ -162,7 +183,8 @@ public class GetFragment extends Fragment{
                 } else {
                     ResultSet rs = statement.executeQuery(query);
                     while (rs.next()) {
-                        arrayList.add(rs.getString(row));
+                        if(!arrayList.contains(rs.getString(row)))
+                            arrayList.add(rs.getString(row));
                     }
                 }
 

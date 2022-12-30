@@ -3,14 +3,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:textSize="30sp"
-        android:text="Premještaj"></TextView>
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="130dp"
+            android:text="Premještaj"
+            android:textSize="30sp"></TextView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:gravity="left">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:text="Odaberite tip:"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
+
+
+            <Spinner
+                android:id="@+id/spinnerTip"
+                android:layout_width="130dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:gravity="left">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:text="Odaberite model:"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
+
+
+            <Spinner
+                android:id="@+id/spinnerModel"
+                android:layout_width="130dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:gravity="left">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:text="Premjestite sa:"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
+
+
+            <Spinner
+                android:id="@+id/spinnerStartLoc"
+                android:layout_width="130dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:gravity="left">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:text="Premjestite na:"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
+
+
+            <Spinner
+                android:id="@+id/spinnerEndLoc"
+                android:layout_width="130dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/relocateAmount"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:digits="0123456789."
+            android:inputType="number"
+            android:hint="Unesite količinu:" />
+
+        <Button
+            android:id="@+id/buttonRelocate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:text="Premjesti" />
+
+
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>
