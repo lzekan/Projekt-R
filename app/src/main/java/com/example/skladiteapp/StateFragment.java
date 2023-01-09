@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-public class  StateFragment extends Fragment {
+public class StateFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
