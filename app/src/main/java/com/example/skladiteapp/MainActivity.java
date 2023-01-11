@@ -74,25 +74,51 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         switch (item.getItemId()) {
             case R.id.iconIzdajAlt:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new TakeFragment()).commit();
+                        .replace(R.id.fragment_container, new TakeFragment())
+                        .setReorderingAllowed(true)
+                        .addToBackStack("izdaj")
+                        .commit();
                 return true;
 
             case R.id.iconZaprimiAlt:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new GetFragment()).commit();
+                        .replace(R.id.fragment_container, new GetFragment())
+                        .setReorderingAllowed(true)
+                        .addToBackStack("zaprimi")
+                        .commit();
                 return true;
 
             case R.id.iconPremjestiAlt:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new RelocateFragment()).commit();
+                        .replace(R.id.fragment_container, new RelocateFragment())
+                        .setReorderingAllowed(true)
+                        .addToBackStack("premjesti")
+                        .commit();
                 return true;
 
             case R.id.iconStanjeAlt:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new StateFragment()).commit();
+                        .replace(R.id.fragment_container, new StateFragment())
+                        .setReorderingAllowed(true)
+                        .addToBackStack("stanje")
+                        .commit();
                 return true;
                 
         }
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+
     }
 }

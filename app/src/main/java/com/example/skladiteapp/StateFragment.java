@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.navigation.NavigationBarView;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,6 +32,10 @@ public class StateFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        //continuity check
+        this.continuityCheck();
+
         View view = inflater.inflate(R.layout.fragment_state, container, false);
 
         ArrayList<String> itemTypes = new ArrayList<>();
@@ -134,5 +140,14 @@ public class StateFragment extends Fragment {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void continuityCheck() {
+        NavigationBarView navigationBarView = getActivity().findViewById(R.id.bottomNavigationView);
+
+        if (navigationBarView.getSelectedItemId() != R.id.iconStanjeAlt) {
+            navigationBarView.setSelectedItemId(R.id.iconStanjeAlt);
+        }
+
     }
 }

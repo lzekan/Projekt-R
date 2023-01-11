@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.sql.Connection;
@@ -30,10 +31,13 @@ import java.util.Collections;
 
 public class GetFragment extends Fragment{
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        //continuity check
+        this.continuityCheck();
+
         View view = inflater.inflate(R.layout.fragment_get, container, false);
 
         ArrayList<String> itemTypes = new ArrayList<>();
@@ -218,6 +222,15 @@ public class GetFragment extends Fragment{
         }
 
         builder.show();
+    }
+
+    public void continuityCheck() {
+        NavigationBarView navigationBarView = getActivity().findViewById(R.id.bottomNavigationView);
+
+        if (navigationBarView.getSelectedItemId() != R.id.iconZaprimiAlt) {
+            navigationBarView.setSelectedItemId(R.id.iconZaprimiAlt);
+        }
+
     }
 
 

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.lang.reflect.Array;
@@ -30,6 +31,10 @@ public class RelocateFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        //continuity check
+        this.continuityCheck();
+
         View view =  inflater.inflate(R.layout.fragment_relocate, container, false);
 
         ArrayList<String> itemTypes = new ArrayList<>();
@@ -173,5 +178,14 @@ public class RelocateFragment extends Fragment{
         }
 
         builder.show();
+    }
+
+    public void continuityCheck() {
+        NavigationBarView navigationBarView = getActivity().findViewById(R.id.bottomNavigationView);
+
+        if (navigationBarView.getSelectedItemId() != R.id.iconPremjestiAlt) {
+            navigationBarView.setSelectedItemId(R.id.iconPremjestiAlt);
+        }
+
     }
 }
