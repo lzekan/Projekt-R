@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.sql.Connection;
@@ -29,6 +30,10 @@ public class TakeFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        //continuity check
+        this.continuityCheck();
+
         View view = inflater.inflate(R.layout.fragment_take, container, false);
 
         ArrayList<String> itemTypes = new ArrayList<>();
@@ -125,6 +130,15 @@ public class TakeFragment extends Fragment{
 
     private void createMessage(String text, String type) {
         // poruka...
+    }
+
+    public void continuityCheck() {
+        NavigationBarView navigationBarView = getActivity().findViewById(R.id.bottomNavigationView);
+
+        if (navigationBarView.getSelectedItemId() != R.id.iconIzdajAlt) {
+            navigationBarView.setSelectedItemId(R.id.iconIzdajAlt);
+        }
+
     }
 
 }
