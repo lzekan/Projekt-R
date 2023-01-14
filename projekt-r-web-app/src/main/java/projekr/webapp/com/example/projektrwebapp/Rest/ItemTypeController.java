@@ -22,4 +22,9 @@ public class ItemTypeController {
     private ArrayList<ItemType> getAllItemTypes() {
         return itemTypeService.getAllItemTypes();
     }
+
+    @GetMapping("/")
+    private void getX(){
+        System.out.println("bobo");
+    }
 }
