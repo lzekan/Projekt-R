@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentState"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background">
 
     <ScrollView
         android:id="@+id/stateScrollView"
@@ -23,12 +24,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:textSize="34sp"
+                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="150dp"
                 android:layout_marginTop="35dp"
                 android:layout_marginRight="130dp"
                 android:text="Stanje"
-                android:textSize="30sp"></TextView>
+                ></TextView>
 
         </LinearLayout>
 

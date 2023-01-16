@@ -1,92 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient_background"
     android:id="@+id/relativeLayoutGet">
 
-
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical">
+        android:layout_height="10dp"
+        android:background="@drawable/toolbar_dropshadow"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="130dp"
-            android:text="Primanje"
-            android:textSize="30sp"></TextView>
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Primanje"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextViewTypeGet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:width="250dp"
-            android:completionThreshold="0"
-            android:hint="Odaberi tip artikla: " />
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewTypeGet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Odaberi tip artikla: "
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:completionThreshold="0"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextViewModelGet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:width="250dp"
-            android:completionThreshold="0"
-            android:hint="Odaberi model artikla: " />
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewModelGet"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Odaberi model artikla: "
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextViewTypeGet"
+        app:layout_constraintStart_toStartOf="@+id/autoCompleteTextViewTypeGet"
+        android:completionThreshold="0"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewTypeGet" />
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextViewLocationGet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:width="250dp"
-            android:completionThreshold="0"
-            android:hint="Odaberi lokaciju skladištenja: " />
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewLocationGet"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Odaberi lokaciju skladištenja: "
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextViewModelGet"
+        app:layout_constraintStart_toStartOf="@+id/autoCompleteTextViewModelGet"
+        android:completionThreshold="0"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewModelGet" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/addAmount"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:digits="0123456789."
-            android:inputType="number"
-            android:hint="Unesite količinu:" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/addAmount"
+        android:digits="0123456789."
+        android:inputType="number"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Unesite količinu: "
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextViewLocationGet"
+        app:layout_constraintStart_toStartOf="@+id/autoCompleteTextViewLocationGet"
+        android:completionThreshold="0"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewLocationGet"/>
 
-        <Button
-            android:id="@+id/buttonAddToBase"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="40dp"
-            android:text="Dodaj" />
+    <Button
+        android:id="@+id/buttonAddToBase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/gradient_button"
+        app:layout_constraintEnd_toEndOf="@+id/addAmount"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/addAmount"
+        app:layout_constraintTop_toBottomOf="@+id/addAmount"
+        android:layout_centerHorizontal="true"
+        android:text="Zaprimi" />
 
-
-    </LinearLayout>
-
-
-
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,149 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient_background"
+    android:id="@+id/relativeLayoutGet">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/toolbar_dropshadow"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Premještaj"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical">
+        android:id="@+id/tip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
 
         <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="130dp"
-            android:text="Premještaj"
-            android:textSize="30sp"></TextView>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:gravity="left">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:text="Odaberite tip:"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:gravity="center"/>
-
-
-            <Spinner
-                android:id="@+id/spinnerTip"
-                android:layout_width="130dp"
-                android:layout_height="50dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:gravity="left">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:text="Odaberite model:"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:gravity="center"/>
-
-
-            <Spinner
-                android:id="@+id/spinnerModel"
-                android:layout_width="130dp"
-                android:layout_height="50dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:gravity="left">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:text="Premjestite sa:"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:gravity="center"/>
-
-
-            <Spinner
-                android:id="@+id/spinnerStartLoc"
-                android:layout_width="130dp"
-                android:layout_height="50dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:gravity="left">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:text="Premjestite na:"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:gravity="center"/>
-
-
-            <Spinner
-                android:id="@+id/spinnerEndLoc"
-                android:layout_width="130dp"
-                android:layout_height="50dp"/>
-
-        </LinearLayout>
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/relocateAmount"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:digits="0123456789."
-            android:inputType="number"
-            android:hint="Unesite količinu:" />
-
-        <Button
-            android:id="@+id/buttonRelocate"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="20dp"
-            android:text="Premjesti" />
-
-
-
-
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="Odaberite tip:"
+            android:textSize="17sp" />
+        <Spinner
+            android:id="@+id/spinnerTip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="60dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+        <TextView
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:text="Odaberite model:"
+            android:textSize="17sp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp" />
+        <Spinner
+            android:id="@+id/spinnerModel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="60dp"/>
+    </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+        <TextView
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:text="Premjestite se:"
+            android:textSize="17sp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp" />
+        <Spinner
+            android:id="@+id/spinnerStartLoc"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="60dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+        <TextView
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:text="Premjestite na:"
+            android:textSize="17sp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp" />
+        <Spinner
+            android:id="@+id/spinnerEndLoc"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="60dp"/>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/relocateAmount"
+        android:layout_width="265dp"
+        android:layout_marginTop="264dp"
+        android:layout_height="wrap_content"
+        android:digits="0123456789."
+        android:inputType="number"
+        android:hint="Unesite količinu:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"/>
+
+    <Button
+        android:id="@+id/buttonRelocate"
+        android:layout_marginTop="320dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_button"
+        app:layout_constraintEnd_toEndOf="@id/tip"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/tip"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:text="Premjesti" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
