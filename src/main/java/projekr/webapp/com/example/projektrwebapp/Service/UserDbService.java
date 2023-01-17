@@ -1,6 +1,7 @@
 package projekr.webapp.com.example.projektrwebapp.Service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import projekr.webapp.com.example.projektrwebapp.DTO.UserDbDTO;
 import projekr.webapp.com.example.projektrwebapp.Entity.UserDb;
@@ -10,6 +11,7 @@ import projekr.webapp.com.example.projektrwebapp.Repository.UserDbRepository;
 @AllArgsConstructor
 public class UserDbService {
     private final UserDbRepository userDbRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     public UserDb findUser(long idUser) {
         return userDbRepository.findUserDbById(idUser);
@@ -36,13 +38,11 @@ public class UserDbService {
             return "Korisnicko ime se vec koristi.";
         }
 
-        //String encodedPassword = bCryptPasswordEncoder
-         //       .encode(newUser.getPassword());
-
+        String encodedPassword = bCryptPasswordEncoder.encode(newUser.getPassword());
 
         UserDb createNewUser = UserDb.builder()
                 .username(newUser.getUsername())
-                .password(newUser.getPassword())
+                .password(encodedPassword)
                 .email(newUser.getEmail())
                 .build();
 
