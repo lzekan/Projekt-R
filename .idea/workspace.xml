@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2853101e-a794-4f9d-94b4-0095761126f0" name="Changes" comment="zivcira me sta mi je sve crveno jer je push krivo napravljen" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop_webapp" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2J5IRhJR9ZGXwyxiMPlDQ7MT2Qc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/hrvoje/Desktop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.ignored.files&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;e0d10a2adcf2920bad7d05bdd55fb183&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="projekr.webapp.com.example.projektrwebapp.Repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ProjektRWebAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="projekt-r-web-app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="projekr.webapp.com.example.projektrwebapp.ProjektRWebAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2853101e-a794-4f9d-94b4-0095761126f0" name="Changes" comment="" />
+      <created>1671361510253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671361510253</updated>
+      <workItem from="1671361511337" duration="95000" />
+      <workItem from="1671361658922" duration="15314000" />
+      <workItem from="1671533028437" duration="12227000" />
+      <workItem from="1671554732403" duration="6000" />
+      <workItem from="1671555083417" duration="260000" />
+      <workItem from="1671555350751" duration="9000" />
+      <workItem from="1671555383781" duration="98000" />
+      <workItem from="1671555492319" duration="201000" />
+      <workItem from="1671555727802" duration="91000" />
+      <workItem from="1671555847374" duration="219000" />
+      <workItem from="1671556074988" duration="31000" />
+      <workItem from="1671628228460" duration="803000" />
+      <workItem from="1671642706809" duration="626000" />
+      <workItem from="1671792498392" duration="69000" />
+      <workItem from="1672419601247" duration="1020000" />
+      <workItem from="1672420738218" duration="85000" />
+      <workItem from="1672423561111" duration="17000" />
+      <workItem from="1672670669450" duration="709000" />
+      <workItem from="1672671506619" duration="165000" />
+      <workItem from="1672671681744" duration="90000" />
+      <workItem from="1672671778236" duration="21000" />
+      <workItem from="1672672200481" duration="145000" />
+      <workItem from="1672672352890" duration="13000" />
+      <workItem from="1672672432833" duration="258000" />
+      <workItem from="1672773032118" duration="894000" />
+      <workItem from="1672778984762" duration="12000" />
+      <workItem from="1672833240176" duration="57000" />
+      <workItem from="1672835747963" duration="7000" />
+      <workItem from="1673441124897" duration="898000" />
+      <workItem from="1673456617856" duration="4000" />
+      <workItem from="1673709397822" duration="700000" />
+      <workItem from="1673949299587" duration="283000" />
+      <workItem from="1673949588853" duration="41000" />
+      <workItem from="1673949646294" duration="15000" />
+      <workItem from="1673949744551" duration="48000" />
+      <workItem from="1673949814390" duration="3326000" />
+      <workItem from="1673956336835" duration="2063000" />
+      <workItem from="1673984637956" duration="892000" />
+      <workItem from="1673985551213" duration="555000" />
+      <workItem from="1673986172238" duration="313000" />
+    </task>
+    <task id="LOCAL-00001" summary="prvi commit">
+      <created>1671555144603</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671555144603</updated>
+    </task>
+    <task id="LOCAL-00002" summary="prvi commit">
+      <created>1671555426909</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671555426909</updated>
+    </task>
+    <task id="LOCAL-00003" summary="prvi commit">
+      <created>1671555620801</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671555620801</updated>
+    </task>
+    <task id="LOCAL-00004" summary="zivcira me sta mi je sve crveno jer je push krivo napravljen">
+      <created>1673986454583</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673986454583</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop_webapp" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="prvi commit" />
+    <MESSAGE value="zivcira me sta mi je sve crveno jer je push krivo napravljen" />
+    <option name="LAST_COMMIT_MESSAGE" value="zivcira me sta mi je sve crveno jer je push krivo napravljen" />
+  </component>
+</project>
