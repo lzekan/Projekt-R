@@ -69,9 +69,9 @@ public class ItemModelAdapter extends RecyclerView.Adapter<ItemModelAdapter.Item
                 @Override
                 public void onClick(View view) {
 
-                    ItemModel itemModel = itemModels.get(getAbsoluteAdapterPosition()) ;
-                    itemModel.setExpandable(!itemModel.isExpandable());
-                    notifyItemChanged(getAbsoluteAdapterPosition());
+                    //ItemModel itemModel = itemModels.get(getAbsoluteAdapterPosition()) ;
+                    //itemModel.setExpandable(!itemModel.isExpandable());
+                    //notifyItemChanged(getAbsoluteAdapterPosition());
                 }
             });
         }

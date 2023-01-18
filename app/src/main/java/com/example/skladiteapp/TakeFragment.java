@@ -36,17 +36,17 @@ public class TakeFragment extends Fragment{
 
         View view = inflater.inflate(R.layout.fragment_take, container, false);
 
-        ArrayList<String> itemTypes = new ArrayList<>();
-        ArrayList<String> allItemModels = new ArrayList<>();
-        ArrayList<String> locations = new ArrayList<>();
+        ArrayList<String> itemTypes = null;
+        ArrayList<String> allItemModels = null;
+        ArrayList<String> locations = null;
 
-        Collections.sort(itemTypes);
-        Collections.sort(allItemModels);
-        Collections.sort(locations);
-
-        executeQuery("SELECT * FROM itemtype", itemTypes, 2);
-        executeQuery("SELECT * FROM model", allItemModels, 3);
-        executeQuery("SELECT * FROM location", locations, 2);
+        try {
+            itemTypes = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/itemtype", "typeName");
+            allItemModels = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/model", "modelName");
+            locations = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/location", "sectorName");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         AutoCompleteTextView actvType = view.findViewById(R.id.autoCompleteTextViewTypeTake);
         ArrayAdapter<String> adapterType = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, itemTypes);
@@ -56,6 +56,7 @@ public class TakeFragment extends Fragment{
         ArrayAdapter<String> adapterModel = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, allItemModels);
         actvModel.setAdapter(adapterModel);
 
+        ArrayList<String> finalItemTypes = itemTypes;
         actvType.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -63,7 +64,7 @@ public class TakeFragment extends Fragment{
                 ArrayList<String> itemModels = new ArrayList<>();
                 GetFragment getFragment = new GetFragment();
 
-                if (itemType.equals("") || !itemTypes.contains(itemType)) {
+                if (itemType.equals("") || !finalItemTypes.contains(itemType)) {
                     getFragment.executeQuery("SELECT * FROM model", itemModels, 3);
                     adapterModel.clear();
                     adapterModel.addAll(itemModels);

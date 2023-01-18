@@ -37,17 +37,17 @@ public class RelocateFragment extends Fragment{
 
         View view =  inflater.inflate(R.layout.fragment_relocate, container, false);
 
-        ArrayList<String> itemTypes = new ArrayList<>();
-        ArrayList<String> allItemModels = new ArrayList<>();
-        ArrayList<String> locations = new ArrayList<>();
+        ArrayList<String> itemTypes = null;
+        ArrayList<String> allItemModels = null;
+        ArrayList<String> locations = null;
 
-        executeQuery("SELECT * FROM itemtype", itemTypes, 2);
-        executeQuery("SELECT * FROM model", allItemModels, 3);
-        executeQuery("SELECT * FROM location", locations, 2);
-
-        Collections.sort(itemTypes);
-        Collections.sort(allItemModels);
-        Collections.sort(locations);
+        try {
+            itemTypes = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/itemtype", "typeName");
+            allItemModels = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/model", "modelName");
+            locations = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/location", "sectorName");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Spinner spinnerType = view.findViewById(R.id.spinnerTip);
         ArrayAdapter<String> adapterTip = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, itemTypes);
