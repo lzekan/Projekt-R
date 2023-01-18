@@ -115,13 +115,11 @@ public class StateFragment extends Fragment {
     private void fakeDataInit() {
         itemModels = new ArrayList<>() ;
 
-        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezktu")) ;
-        itemModels.add(new ItemModel("Kaciga", "kafiehtica 200XC", "nezktu")) ;
-        itemModels.add(new ItemModel("Tkanina", "Maramica 200XC", "netu")) ;
-        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezktu")) ;
-        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezkotu")) ;
-        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezktu")) ;
-        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezkoju")) ;
+        itemModels.add(new ItemModel("Lopate", "Frankfurt lopata", "B1 : 56")) ;
+        itemModels.add(new ItemModel("Kacige", "Kaciga  200XC", "D2 : 170")) ;
+        itemModels.add(new ItemModel("Materijali", "Cement 1kg", "A2 : 60")) ;
+        itemModels.add(new ItemModel("Alati", "Busilica", "D3 : 45")) ;
+        itemModels.add(new ItemModel("Sadnice", "Mrkva sjeme 100g", "A1 : 460")) ;
     }
 
     public static void executeQuery (String query, ArrayList<String> arrayList, int row) {
