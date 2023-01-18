@@ -49,7 +49,6 @@ public class RelocateFragment extends Fragment{
             allItemModels = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/model", "modelName");
             locations = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/location", "sectorName");
         } catch (InterruptedException e) {
-            Log.i("a sta je ovo", "---------------");
             e.printStackTrace();
         }
 

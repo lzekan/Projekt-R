@@ -1,0 +1,197 @@
+[33mcommit 07e3d5835a55ca9bffaaf1ad4de43b39067ad080[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Merge: aaada2f 8dd8822
+Author: lzekan <lz53052@fer.hr>
+Date:   Tue Jan 17 21:04:17 2023 +0100
+
+    Merge branch 'develop' of https://gitlab.com/lzekan/projekt-r into develop
+
+[33mcommit aaada2f7fc603b83c1f7a36b75671d916ed0ba30[m
+Author: lzekan <lz53052@fer.hr>
+Date:   Tue Jan 17 20:53:41 2023 +0100
+
+    login preko web servisa
+
+[33mcommit 8dd882281ae4201953c83a9d03433fff4323d773[m
+Author: Adriana <adryana.ruzic@gmail.com>
+Date:   Tue Jan 17 19:59:59 2023 +0100
+
+    popravci na frontu
+
+[33mcommit 406532e71d3ddea56fc3d06c1aefe8eef0c55b32[m
+Merge: 526a136 55155a8
+Author: Adriana <adryana.ruzic@gmail.com>
+Date:   Mon Jan 16 19:18:49 2023 +0100
+
+    Merge branch 'develop' of https://gitlab.com/lzekan/projekt-r into develop
+
+[33mcommit 526a136d4f915834974840127232a30cc1cde895[m
+Author: Adriana <adryana.ruzic@gmail.com>
+Date:   Mon Jan 16 19:16:27 2023 +0100
+
+    frontend svih aktivnosti
+
+[33mcommit 55155a8eb71754db700882a8fa06404a22b78190[m
+Author: lzekan <lz53052@fer.hr>
+Date:   Mon Jan 16 14:51:01 2023 +0100
+
+    prebacen web app u develop franu
+
+[33mcommit 77b018c36739d2d9dfdabf29e206448455254a76[m
+Merge: 16c6809 3afb6e0
+Author: lzekan <lz53052@fer.hr>
+Date:   Wed Jan 11 10:37:57 2023 +0100
+
+    Merge branch 'develop' of https://gitlab.com/lzekan/projekt-r into develop
+
+[33mcommit 3afb6e06bfc3eeeaba52a95b58c835a27b2c47b2[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Wed Jan 11 03:26:05 2023 +0100
+
+    back-button functionality between fragments
+
+[33mcommit e18ee739987c80b9d708cd83ba308e4bed20d10f[m
+Merge: 3d099cd 7edddae
+Author: Luka Zekan <lz53052@fer.hr>
+Date:   Mon Jan 9 23:51:31 2023 +0000
+
+    Merge branch 'revert-3d099cd3' into 'develop'
+    
+    Revert "must commit"
+    
+    See merge request lzekan/projekt-r!1
+
+[33mcommit 7edddae6a9a8d30bd39b29e6b060f8b8914b7bc3[m
+Author: Luka Zekan <lz53052@fer.hr>
+Date:   Mon Jan 9 23:51:04 2023 +0000
+
+    Revert "must commit"
+    
+    This reverts commit 3d099cd3d8a626a7eb19cc55cd2053770aec39e7
+
+[33mcommit 16c680905ea283a1ea1dfd92a2308d3d29a61ee7[m
+Author: lzekan <lz53052@fer.hr>
+Date:   Tue Jan 10 00:48:45 2023 +0100
+
+    Revert "must commit"
+    
+    This reverts commit 3d099cd3d8a626a7eb19cc55cd2053770aec39e7.
+
+[33mcommit 3d099cd3d8a626a7eb19cc55cd2053770aec39e7[m
+Author: lzekan <lz53052@fer.hr>
+Date:   Sun Jan 8 23:56:19 2023 +0100
+
+    must commit
+
+[33mcommit 8cdcbdeae2c242f57eb63ae80943c53fb39f5a72[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Wed Jan 4 17:08:10 2023 +0100
+
+    button on Izdavanje
+
+[33mcommit 4a8e59434af5561186399618cc19a12b274d5c61[m
+Author: Adriana <adryana.ruzic@gmail.com>
+Date:   Wed Jan 4 13:50:50 2023 +0100
+
+    fragment izdavanje, frontend+mali dio backenda
+
+[33mcommit 22e4dcb5875a5baff37653d6b02510edc6727d11[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Fri Dec 30 17:05:24 2022 +0100
+
+    dodani fragmenti stanje i premjesti
+
+[33mcommit 3563229fac0ecccfe1973a9705cf80a1a581919d[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Wed Dec 28 17:56:22 2022 +0100
+
+    added custom toolbar, relocated logout button
+
+[33mcommit 1343ef97b250dbd403a2137b3c39f1ab5bcf918d[m
+Author: Adriana <adryana.ruzic@gmail.com>
+Date:   Wed Dec 21 16:07:40 2022 +0100
+
+    restrictions
+
+[33mcommit 9893028fbd9c77e225a509e991bc51af7578625d[m
+Author: Adriana <adryana.ruzic@gmail.com>
+Date:   Wed Dec 21 15:02:24 2022 +0100
+
+    icons revealed
+
+[33mcommit 086f7d78fe4a290016c5c31f6b6652e4e2b259c1[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Wed Dec 21 13:39:28 2022 +0100
+
+    addet new fragment, reformatted some code
+
+[33mcommit 27a250d1c194ba9700d11b3175986d7e0d19909e[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Mon Dec 19 14:59:49 2022 +0100
+
+    navigation fully redone and functioning
+
+[33mcommit 0707880db78f397968b34948476e18d6db80ed9a[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Mon Dec 19 14:00:52 2022 +0100
+
+    new icons and bottom menu
+
+[33mcommit 9ae8ac82517736f8e2340a7baeaf3a32b1bb7993[m
+Author: Franjo Čuljak <fc53275@fer.hr>
+Date:   Wed Dec 14 14:57:44 2022 +0100
+
+    Podesena pripradnost elemenata, debug
+
+[33mcommit 25a479dea1f905bc12e8caee926aa7b022dff7e1[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Wed Dec 14 11:51:05 2022 +0100
+
+    Promjena da se prvo ucita stranica za izdavanje, zamjena ikona zaprimanja i izadavanja, promjena da je boja drugacija na aktivnoj aktivnosti, dodavanje iskocnog prozora pri odjavi, ali samo na stranici zaprimanje radi reprezentativnosti za sastanak
+
+[33mcommit bf9efe36ab2590dd54589f4c4a44cfc116147c7e[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Sat Dec 10 18:58:23 2022 +0100
+
+    Dodavanje funkcionalnosti primanja u skladiste
+
+[33mcommit b017d13127899add33821578c2d458bc5e78b530[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Sat Dec 10 13:56:16 2022 +0100
+
+    Korisnik se sprema u Postgre bazu i u SQLite bazu prilikom uspjesne registracije, prilikom prijave provjerava se ako postoji user u lokalnoj SQLite bazi, ne u Postgre serverskoj bazi
+
+[33mcommit af0c712e3572e7580af43ed9c002f0381c2698c3[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Sat Dec 10 02:47:40 2022 +0100
+
+    Zamjena e.printStackTrace
+
+[33mcommit 77f60b3f3acae4bd5317fd74f0740396df98d866[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Sat Dec 10 02:24:08 2022 +0100
+
+    Pojavljuje se iskocni prozor kada se krivo prijavi/registrira ili uspjesno registrira
+
+[33mcommit 383e41c88c19cf44d3de9dd628e1854d32c93d77[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Sat Dec 10 01:45:51 2022 +0100
+
+    Dodana mogucnost promjene prozora na "instagram nacin"
+
+[33mcommit ef5b04423a9e04886cd7051f9312534ed4961602[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Fri Dec 9 14:08:16 2022 +0100
+
+    Nije dobro promijenio dinamicko kreiranje
+
+[33mcommit 475a027e0193141712042e0b0ac613eea3f248c3[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Wed Dec 7 19:08:06 2022 +0100
+
+    Promjenio sam da se ne dodaje dinamicki text u register
+
+[33mcommit 1e595df2141ef02800875f61437566d6fe14764c[m
+Author: hrvoje <hrvoje.bencic@gmail.com>
+Date:   Wed Dec 7 19:06:58 2022 +0100
+
+    Obrisati text.txt

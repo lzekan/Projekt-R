@@ -57,7 +57,7 @@
             android:textSize="17sp" />
         <Spinner
             android:id="@+id/spinnerTip"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginRight="60dp"/>
     </LinearLayout>
@@ -84,7 +84,7 @@
             android:paddingBottom="10dp" />
         <Spinner
             android:id="@+id/spinnerModel"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginRight="60dp"/>
     </LinearLayout>
@@ -111,7 +111,7 @@
             android:paddingBottom="10dp" />
         <Spinner
             android:id="@+id/spinnerStartLoc"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginRight="60dp"/>
     </LinearLayout>
@@ -138,7 +138,7 @@
             android:paddingBottom="10dp" />
         <Spinner
             android:id="@+id/spinnerEndLoc"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginRight="60dp"/>
     </LinearLayout>
