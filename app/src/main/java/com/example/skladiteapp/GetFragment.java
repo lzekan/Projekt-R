@@ -128,8 +128,7 @@ public class GetFragment extends Fragment{
                     }
 
                     String msg = ConnectionHelper.postJSON("http://192.168.62.166:8080/api/add/item", json);
-
-                    createMessage("Artikl uspješno dodan.","success");
+                    createMessage(msg,"success");
                 }
             }
         });

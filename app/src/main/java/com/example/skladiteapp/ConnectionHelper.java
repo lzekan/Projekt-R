@@ -1,8 +1,5 @@
 package com.example.skladiteapp;
 
-import android.util.Log;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -11,7 +8,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.util.ArrayList;;
 
 public class ConnectionHelper {
     URL url;
@@ -48,6 +45,7 @@ public class ConnectionHelper {
                     }
                 }
 
+
                 http.disconnect();
             }
             catch(Exception e){
@@ -56,7 +54,6 @@ public class ConnectionHelper {
         });
 
         thread.run();
-
         return result;
     }
 
@@ -68,11 +65,15 @@ public class ConnectionHelper {
                 HttpURLConnection http = (HttpURLConnection) cUrl.openConnection();
                 http.setRequestMethod("POST");
                 http.setDoOutput(true);
+                http.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
                 http.setUseCaches(false);
+                http.connect();
 
                 try (DataOutputStream dos = new DataOutputStream(http.getOutputStream())) {
                     dos.writeBytes(String.valueOf(obj));
                 }
+
+
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(
                         http.getInputStream())))
                 {
