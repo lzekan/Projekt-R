@@ -9,7 +9,7 @@ import projekr.webapp.com.example.projektrwebapp.Service.UserDbService;
 
 @RestController
 @AllArgsConstructor
-public class UserDbController {
+public class    UserDbController {
     @Autowired
     private final UserDbService userDbService;
 

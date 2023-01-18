@@ -14,6 +14,6 @@ public class LocationService {
     private final LocationRepository locationRepository;
 
     public ArrayList<Location> getAllLocations() {
-        return  locationRepository.getAllLocations();
+        return locationRepository.getAllLocations();
     }
 }

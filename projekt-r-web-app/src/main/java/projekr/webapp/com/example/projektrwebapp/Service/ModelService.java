@@ -19,4 +19,6 @@ public class ModelService {
     public ArrayList<Model> getAllModelsSameType(String itemTypeName) {
         return modelRepository.getAllModelsSameType(itemTypeName);
     }
+
+
 }

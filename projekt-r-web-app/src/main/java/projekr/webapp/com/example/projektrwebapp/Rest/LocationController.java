@@ -19,4 +19,5 @@ public class LocationController {
     private ArrayList<Location> getAllLocations() {
         return locationService.getAllLocations();
     }
+    
 }

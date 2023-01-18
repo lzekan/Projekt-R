@@ -1,8 +1,10 @@
 package projekr.webapp.com.example.projektrwebapp.DTO;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class ItemDTO {
     private String itemType;
     private String model;

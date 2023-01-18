@@ -52,9 +52,11 @@ public class ItemService {
         for (Model model : allModels) {
             if (model.getModelName().equals(itemDTO.getModel())) {
                 newModelId = model.getIdModel();
+                itemDTO.setBarcode("barcode" + newModelId);
             }
         }
         if (newModelId == 0) {
+            itemDTO.setBarcode("barcode" + (allModels.size() + 25));
             modelRepository.save(Model.builder()
                     .modelName(itemDTO.getModel())
                     .build());
@@ -93,21 +95,33 @@ public class ItemService {
                     .id_model(AggregateReference.to(modelRepository.getModelByModelName(itemDTO.getModel()).getIdModel()))
                     .id_location(AggregateReference.to(locationRepository.getLocationBySectorName(itemDTO.getLocation()).getIdLocation()))
                     .build());
-            return "Novi artikl uspjesno dodan.";
+            return "Novi artikli uspjesno zaprimljeni.";
         } else {
             itemRepository.updateItem(newItemId, itemDTO.getAmount());
-            return "Postojeci artikl uspjesno nadodan.";
+            return "Postojeci artikli uspjesno nadodani.";
         }
     }
 
     public String removeItem(ItemDTO itemDTO){
 
         ArrayList<Item> allItems = itemRepository.getAllItems();
+        ArrayList<Model> allModels = modelRepository.getAllModels();
+        long modelIndex = -1;
+
+        for(Model model : allModels){
+            if(itemDTO.getModel().equals(model.getModelName())){
+                modelIndex = model.getIdModel();
+            }
+        }
+
+        if(modelIndex == -1) {
+            return "Navedena kombinacija artikala ne postoji u skladistu.";
+        }
 
         for(Item item : allItems) {
-            if(item.getBarcode().equals(itemDTO.getBarcode()) && item.getAmount() >= itemDTO.getAmount()) {
+            if(item.getId_model().getId().equals(modelIndex) && item.getAmount() >= itemDTO.getAmount()) {
                 Location location = locationRepository.getLocationBySectorName(itemDTO.getLocation());
-                if(location.getIdLocation() == item.getId_location().getId()){
+                if(location != null && location.getIdLocation() == item.getId_location().getId()){
                     long itemID = item.getIdItem();
                     itemRepository.updateItem(itemID, -itemDTO.getAmount());
                     return "Artikli izdani.";
