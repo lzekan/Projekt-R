@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -29,6 +30,10 @@ import java.util.TreeMap;
 
 
 public class StateFragment extends Fragment {
+
+    RecyclerView recyclerView ;
+    List<ItemModel> itemModels ;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,58 +43,85 @@ public class StateFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_state, container, false);
 
-        ArrayList<String> itemTypes = new ArrayList<>();
-        executeQuery("SELECT * FROM itemtype", itemTypes, 2);
-        Collections.sort(itemTypes);
-        LinearLayout linearInsideScroll = view.findViewById(R.id.linearInsideScroll);
-        for (String itemType : itemTypes) {
-
-            System.out.println("sada sam na " + itemType);
-
-            TextView itemTypeTextView = new TextView(getActivity());
-            itemTypeTextView.setText(itemType);
-            itemTypeTextView.setTextSize(25);
-            itemTypeTextView.setPadding((int) (15 * getResources().getDisplayMetrics().density),
-                    (int) (20 * getResources().getDisplayMetrics().density), 0, 0);
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            linearInsideScroll.addView(itemTypeTextView, params);
-
-            //mapa tipa "Vile za kopanje" : ["A-1,50", "D-2,70"]
-            Map<String, ArrayList<String>> models = new TreeMap<>();
-            ArrayList<Integer> rows = new ArrayList<>();
-            rows.addAll(Arrays.asList(5, 11, 13));
-            executeQueryMultiple("select * from itemtype join item on itemtype.idtype = item.idtype " +
-                    "join model on item.idmodel = model.idmodel " +
-                    "join location on item.idlocation = location.idlocation " +
-                    "where typename = '" + itemType + "' and ammount > 0", models, rows);
-
-            System.out.println("vraaceno je " + models);
-
-            for (String model : models.keySet()) {
-                TextView modelTextView = new TextView(getActivity());
-                modelTextView.setText(model);
-                modelTextView.setTextSize(20);
-
-                modelTextView.setPadding((int) (35 * getResources().getDisplayMetrics().density), 0, 0, 0);
-                linearInsideScroll.addView(modelTextView, params);
-
-                for (String combinedString : models.get(model)) {
-                    String sector = combinedString.split(",")[0];
-                    String amount = combinedString.split(",")[1];
-
-                    TextView sectorAmountTV = new TextView(getActivity());
-                    sectorAmountTV.setText("Na " + sector + ": " + amount);
-                    sectorAmountTV.setTextSize(15);
-                    sectorAmountTV.setPadding((int) (45 * getResources().getDisplayMetrics().density), 0, 0, 0);
-                    linearInsideScroll.addView(sectorAmountTV, params);
-
-                }
-            }
-        }
+        fakeDataInit();
+        //setRecyclerView();
+//        ArrayList<String> itemTypes = new ArrayList<>();
+//        executeQuery("SELECT * FROM itemtype", itemTypes, 2);
+//        Collections.sort(itemTypes);
+//        LinearLayout linearInsideScroll = view.findViewById(R.id.linearInsideScroll);
+//        for (String itemType : itemTypes) {
+//
+//            System.out.println("sada sam na " + itemType);
+//
+//            TextView itemTypeTextView = new TextView(getActivity());
+//            itemTypeTextView.setText(itemType);
+//            itemTypeTextView.setTextSize(25);
+//            itemTypeTextView.setPadding((int) (15 * getResources().getDisplayMetrics().density),
+//                    (int) (20 * getResources().getDisplayMetrics().density), 0, 0);
+//
+//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+//                    ViewGroup.LayoutParams.WRAP_CONTENT,
+//                    ViewGroup.LayoutParams.WRAP_CONTENT);
+//            linearInsideScroll.addView(itemTypeTextView, params);
+//
+//            //mapa tipa "Vile za kopanje" : ["A-1,50", "D-2,70"]
+//            Map<String, ArrayList<String>> models = new TreeMap<>();
+//            ArrayList<Integer> rows = new ArrayList<>();
+//            rows.addAll(Arrays.asList(5, 11, 13));
+//            executeQueryMultiple("select * from itemtype join item on itemtype.idtype = item.idtype " +
+//                    "join model on item.idmodel = model.idmodel " +
+//                    "join location on item.idlocation = location.idlocation " +
+//                    "where typename = '" + itemType + "' and ammount > 0", models, rows);
+//
+//            System.out.println("vraaceno je " + models);
+//
+//            for (String model : models.keySet()) {
+//                TextView modelTextView = new TextView(getActivity());
+//                modelTextView.setText(model);
+//                modelTextView.setTextSize(20);
+//
+//                modelTextView.setPadding((int) (35 * getResources().getDisplayMetrics().density), 0, 0, 0);
+//                linearInsideScroll.addView(modelTextView, params);
+//
+//                for (String combinedString : models.get(model)) {
+//                    String sector = combinedString.split(",")[0];
+//                    String amount = combinedString.split(",")[1];
+//
+//                    TextView sectorAmountTV = new TextView(getActivity());
+//                    sectorAmountTV.setText("Na " + sector + ": " + amount);
+//                    sectorAmountTV.setTextSize(15);
+//                    sectorAmountTV.setPadding((int) (45 * getResources().getDisplayMetrics().density), 0, 0, 0);
+//                    linearInsideScroll.addView(sectorAmountTV, params);
+//
+//                }
+//            }
+//        }
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        setRecyclerView();
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void setRecyclerView() {
+        ItemModelAdapter itemModelAdapter = new ItemModelAdapter(itemModels) ;
+        recyclerView = getActivity().findViewById(R.id.state_recycler) ;
+        recyclerView.setAdapter(itemModelAdapter);
+        recyclerView.setHasFixedSize(true);
+    }
+
+    private void fakeDataInit() {
+        itemModels = new ArrayList<>() ;
+
+        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezktu")) ;
+        itemModels.add(new ItemModel("Kaciga", "kafiehtica 200XC", "nezktu")) ;
+        itemModels.add(new ItemModel("Tkanina", "Maramica 200XC", "netu")) ;
+        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezktu")) ;
+        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezkotu")) ;
+        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezktu")) ;
+        itemModels.add(new ItemModel("Lopata", "Lopatica 200XC", "nezkoju")) ;
     }
 
     public static void executeQuery (String query, ArrayList<String> arrayList, int row) {
