@@ -111,7 +111,6 @@ public class GetFragment extends Fragment{
                 String model = actvModel.getText().toString();
                 String location = actvLocation.getText().toString();
                 String amount = amountTextView.getText().toString();
-                ArrayList<String> emptyArray = new ArrayList<>();
 
                 if (itemType.equals("") || model.equals("") || location.equals("") || amount.equals("")) {
                     createMessage("Molimo unesite sve podatke.","error");

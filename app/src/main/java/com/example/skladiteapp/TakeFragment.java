@@ -20,6 +20,8 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONObject;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -96,7 +98,29 @@ public class TakeFragment extends Fragment{
         buttonSaveToBase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // umetanje u bazu....
+                String itemType = actvType.getText().toString();
+                String model = actvModel.getText().toString();
+                String location = actvLocation.getText().toString();
+                String amount = amountTextView.getText().toString();
+                ArrayList<String> emptyArray = new ArrayList<>();
+
+                if (itemType.equals("") || model.equals("") || location.equals("") || amount.equals("")) {
+                    createMessage("Molimo unesite sve podatke.","error");
+                } else {
+                    JSONObject json = new JSONObject();
+                    try{
+                        json.put("itemType", itemType);
+                        json.put("model", model);
+                        json.put("location", location);
+                        json.put("amount", amount);
+                        json.put("barcode", "");
+                    } catch(Exception e){
+                        createMessage("Pogreska u unosu.","error");
+                    }
+
+                    String msg = ConnectionHelper.postJSON("http://192.168.62.166:8080/api/remove/item", json);
+                    createMessage(msg, (msg.charAt(0) == 'A' ? "success" : "error"));
+                }
             }
         });
 
@@ -130,7 +154,29 @@ public class TakeFragment extends Fragment{
     }
 
     private void createMessage(String text, String type) {
-        // poruka...
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(true);
+        builder.setMessage(text);
+
+        if (type.equals("error")) {
+            builder.setTitle("Dogodila se greška!");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //nothing
+                }
+            });
+        } else if (type.equals("success")) {
+            builder.setTitle("Uspjeh!");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //nothing
+                }
+            });
+        }
+
+        builder.show();
     }
 
     public void continuityCheck() {

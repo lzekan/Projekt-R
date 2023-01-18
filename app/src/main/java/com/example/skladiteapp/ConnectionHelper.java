@@ -45,7 +45,6 @@ public class ConnectionHelper {
                     }
                 }
 
-
                 http.disconnect();
             }
             catch(Exception e){
@@ -58,7 +57,8 @@ public class ConnectionHelper {
     }
 
     public static String postJSON(String url, JSONObject obj){
-        String message = null;
+        String message = "";
+        StringBuilder sb = new StringBuilder();
         Thread thread = new Thread(() -> {
             try{
                 URL cUrl = new URL(url);
@@ -73,14 +73,10 @@ public class ConnectionHelper {
                     dos.writeBytes(String.valueOf(obj));
                 }
 
-
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(
                         http.getInputStream())))
                 {
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        System.out.println(line);
-                    }
+                    sb.append(br.readLine());
                 }
 
                 http.disconnect();
@@ -93,7 +89,9 @@ public class ConnectionHelper {
 
         thread.run();
 
+        message = sb.toString();
         return message;
+
     }
 
 
