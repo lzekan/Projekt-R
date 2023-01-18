@@ -2,6 +2,7 @@ package com.example.skladiteapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.sql.Connection;
@@ -46,6 +49,7 @@ public class RelocateFragment extends Fragment{
             allItemModels = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/model", "modelName");
             locations = ConnectionHelper.getJSON("http://192.168.62.166:8080/api/get/all/location", "sectorName");
         } catch (InterruptedException e) {
+            Log.i("a sta je ovo", "---------------");
             e.printStackTrace();
         }
 
@@ -70,59 +74,30 @@ public class RelocateFragment extends Fragment{
         buttonSaveToBase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String itemType = spinnerType.getSelectedItem().toString();
-                String model = spinnerModel.getSelectedItem().toString();
-                String startLoc = spinnerStartLoc.getSelectedItem().toString();
-                String endLoc = spinnerEndLoc.getSelectedItem().toString();
-                String amount = amountTextView.getText().toString();
+                String itemType = String.valueOf(spinnerType.getSelectedItem());
+                String model = String.valueOf(spinnerModel.getSelectedItem());
+                String startLoc = String.valueOf(spinnerStartLoc.getSelectedItem());
+                String endLoc = String.valueOf(spinnerEndLoc.getSelectedItem());
+                String amount = String.valueOf(amountTextView.getText());
 
-                if (amount=="") {
-                    createMessage("Molimo unesite količinu.","error");
-                }  else {
-                    ArrayList<String> queryAmount = new ArrayList<>();
-                    executeQuery(" select * from item join itemtype on item.idtype = itemtype.idtype " +
-                            "join model on item.idmodel = model.idmodel " +
-                            "join location on item.idlocation = location.idlocation " +
-                            "where modelname = '" + model + "' " +
-                            "and typename='" + itemType + "' " +
-                            "and sectorname = '" + startLoc + "' ", queryAmount, 3);
 
-                    if (queryAmount.size() == 0) {
-                        createMessage("Unesena je neispravna kombinacija podataka.", "error");
-                    } else if (Integer.parseInt(queryAmount.get(0)) < Integer.parseInt(amount)) {
-                        createMessage("Unesena je prevelika količina, trenutna količina: " + queryAmount.get(0), "error");
-                    } else {
-                        int newValue = Integer.parseInt(queryAmount.get(0)) - Integer.parseInt(amount);
-                        executeQuery("update item " +
-                                "set ammount = " + newValue + " " +
-                                "where idtype = (select idtype from itemtype where typename='" + itemType + "')" +
-                                "and idmodel = (select idmodel from model where modelname='" + model + "')" +
-                                "and idlocation = (select idlocation from location where sectorname='" + startLoc + "')", queryAmount, -1);
-
-                        executeQuery(" select * from item join itemtype on item.idtype = itemtype.idtype " +
-                                "join model on item.idmodel = model.idmodel " +
-                                "join location on item.idlocation = location.idlocation " +
-                                "where modelname = '" + model + "' " +
-                                "and typename='" + itemType + "' " +
-                                "and sectorname = '" + endLoc + "' ", queryAmount, 3);
-
-                        if(queryAmount.size()>1) {
-                            int toUpdateValue = Integer.parseInt(queryAmount.get(1)) + Integer.parseInt(amount);
-                            executeQuery("update item " +
-                                    "set ammount = " + toUpdateValue + " " +
-                                    "where idtype = (select idtype from itemtype where typename='" + itemType + "')" +
-                                    "and idmodel = (select idmodel from model where modelname='" + model + "')" +
-                                    "and idlocation = (select idlocation from location where sectorname='" + endLoc + "')", queryAmount, -1);
-                        } else {
-                            executeQuery("INSERT INTO item (iditem,barcode,ammount,idmodel,idlocation,idtype) " +
-                                            " VALUES (nextval('seq_iditem'),'barcode'," +amount+
-                                            " ,(select idmodel from model where modelname='"+model+"'"+
-                                            " ),(select idlocation from location where sectorname='"+endLoc+"'"+
-                                            " ),(select idtype from itemtype where typename='"+itemType+"'));", queryAmount, -1);
-                        }
-                        createMessage("Artikl uspješno premješten.", "success");
+                if (itemType == "" || model == "" || startLoc == "" || endLoc == "" || amount == "") {
+                    createMessage("Molimo unesite sve potrebne podatke.","error");
+                } else {
+                    JSONObject json = new JSONObject();
+                    try{
+                        json.put("itemType", itemType);
+                        json.put("model", model);
+                        json.put("locationFrom", startLoc);
+                        json.put("locationTo", endLoc);
+                        json.put("amount", amount);
+                        json.put("barcode", "");
+                    } catch(Exception e){
+                        createMessage("Pogreska u unosu.","error");
                     }
 
+                    String msg = ConnectionHelper.postJSON("http://192.168.62.166:8080/api/relocate/item", json);
+                    createMessage(msg, (msg.charAt(0) == 'A' ? "success" : "error"));
                 }
             }
         });
